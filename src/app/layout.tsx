@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "react-hot-toast";
+import { AuthProvider } from "@/context/auth-context";
+import { TodoProvider } from "@/context/todo-context";
+import { ModalCreateTodo } from "@/components/ui/modal-create";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <AuthProvider>
+          <TodoProvider>
+          <Toaster position="top-right"/>
+          <ModalCreateTodo/>
+          {children}
+          </TodoProvider>
+        </AuthProvider>
       </body>
     </html>
   );
