@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/auth-context";
 import { TodoProvider } from "@/context/todo-context";
 import { ModalCreateTodo } from "@/components/ui/modal-create";
+import { ModalUpdateProvider } from "@/provider/modal-update-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,6 +36,7 @@ export default function RootLayout({
           <TodoProvider>
           <Toaster position="top-right"/>
           <ModalCreateTodo/>
+          <ModalUpdateProvider/>
           {children}
           </TodoProvider>
         </AuthProvider>
